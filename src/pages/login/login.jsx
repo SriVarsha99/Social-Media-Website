@@ -6,7 +6,7 @@ const login = () => {
         <div className="login">
             <div className="card">
                 <div className="left">
-                    <h1></h1>
+                    <h1>Bronco Connect</h1>
                     <span>Don't have an account?</span>
                     <Link to="/register"><button>Register</button></Link>
                 </div>

@@ -24,6 +24,7 @@ const Register = () => {
                     </form>
                 </div>
                 <div className="left">
+                    <h1>Bronco Connect</h1>
                     <span>Do you have an account ?
                     </span>
                     <Link to="/login"><button>Login</button></Link>
