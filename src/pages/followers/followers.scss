@@ -1,0 +1,65 @@
+.followers {
+    height: 100vh;
+    background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
+    url("./gt.jpg") center;
+    background-size: cover;
+    //background-color: rgb(193, 190, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    .container {
+      width: 50%;
+      display: flex;
+      //background-color: rgb(193, 190, 255);
+      background-color: white;
+      //background: hsl(280, 35%, 85%);
+
+      /* Chrome 10-25, Safari 5.1-6 
+      background: -webkit-linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1));
+
+       /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
+      background: linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1));*/
+      border-radius: 10px;
+      min-height: 600px;
+      overflow: hidden;
+      flex-direction: column;
+
+      .header {
+        align-items: center;
+        justify-content: center;
+        text-align:center;
+        display: flex;
+        height:100px;
+        color: #8B008B;
+    }
+
+    .search {
+        width: 600px;
+    }
+
+    h2 {
+        color: #555;
+        }
+
+    button {
+        border: none;
+        background-color: #938eef;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+    .container-body {
+        align-items: center;
+        justify-content: center;
+        text-align:center;
+        display: flex; 
+        }
+
+        .table {
+            --bs-table-bg: transparent;
+        }
+    }
+    
+  }

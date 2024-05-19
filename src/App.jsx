@@ -1,6 +1,8 @@
 import React from 'react';
 import Login from './pages/login/login'; // Ensure correct import path and capitalization
 import Register from "./pages/register/register"; // Ensure correct import path and capitalization
+import Followers from './pages/followers/component';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -20,6 +22,10 @@ function App() {
     {
       path: "/register",
       element: <Register />, // Capitalized component
+    },
+    {
+      path: "/followers",
+      element: <Followers />, // Capitalized component
     },
   ]);
 
