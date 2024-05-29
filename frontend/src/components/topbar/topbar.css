@@ -1,7 +1,7 @@
 .topbarContainer {
   height: 50px;
   width: 100%;
-  background-color: #1877f2;
+  background-color: rgb(99, 96, 151);
   display: flex;
   align-items: center;
   position: sticky;
@@ -54,6 +54,7 @@
   align-items: center;
   justify-content: space-around;
   color: white;
+  margin-right: auto;
 }
 
 .topbarLink {
@@ -93,4 +94,6 @@
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+  background: url("./profile.jpg") center;
+  background-size: cover;
 }
