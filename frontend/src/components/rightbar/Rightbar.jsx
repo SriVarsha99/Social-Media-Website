@@ -36,62 +36,8 @@ export default function Rightbar({ profile }) {
             <span className="rightbarInfoKey">From:</span>
             <span className="rightbarInfoValue">India</span>
           </div>
-          <div className="rightbarInfoItem">
-            <span className="rightbarInfoKey">Relationship:</span>
-            <span className="rightbarInfoValue">Single</span>
-          </div>
         </div>
-        <h4 className="rightbarTitle">User friends</h4>
-        <div className="rightbarFollowings">
-          <div className="rightbarFollowing">
-            <img
-              src="assets/person/1.jpg"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Samyuktha</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="assets/person/2.jpg"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Simran</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="assets/person/3.jpg"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Anchal</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="assets/person/4.jpeg"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Vibha</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="assets/person/5.jpeg"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Kavya</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src="assets/person/6.jpeg"
-              alt=""
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Rashmi</span>
-          </div>
-        </div>
+        
       </>
     );
   };
