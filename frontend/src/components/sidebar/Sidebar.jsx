@@ -10,6 +10,11 @@ import EventIcon from '@mui/icons-material/Event';
 import SchoolIcon from '@mui/icons-material/School';
 import { Users } from "../../dummyData";
 import CloseFriend from "../closeFriend/CloseFriend";
+import Button from 'react-bootstrap/Button';
+import { FaSearch } from "react-icons/fa";
+import InputGroup from 'react-bootstrap/InputGroup';
+import Form from 'react-bootstrap/Form';
+import Table from 'react-bootstrap/Table';
 
 export default function Sidebar() {
   return (
@@ -17,43 +22,22 @@ export default function Sidebar() {
       <div className="sidebarWrapper">
         <ul className="sidebarList">
           <li className="sidebarListItem">
-            <RssFeedIcon className="sidebarIcon" />
-            <span className="sidebarListItemText">Feed</span>
+            <span className="sidebarListItemText">Friend Requests</span>
           </li>
           <li className="sidebarListItem">
-            <ChatIcon className="sidebarIcon" />
-            <span className="sidebarListItemText">Chats</span>
+            <InputGroup className="mb-3 search">
+            <Form.Control
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="basic-addon2"
+            />
+            <Button variant="outline-secondary" id="button-addon2">
+              <FaSearch />
+            </Button>
+          </InputGroup>
           </li>
-          <li className="sidebarListItem">
-            <PlayCircleFilledIcon className="sidebarIcon" />
-            <span className="sidebarListItemText">Videos</span>
-          </li>
-          <li className="sidebarListItem">
-            <GroupIcon className="sidebarIcon" />
-            <span className="sidebarListItemText">Groups</span>
-          </li>
-          <li className="sidebarListItem">
-            <BookmarkIcon className="sidebarIcon" />
-            <span className="sidebarListItemText">Bookmarks</span>
-          </li>
-          <li className="sidebarListItem">
-            <HelpOutlineIcon className="sidebarIcon" />
-            <span className="sidebarListItemText">Questions</span>
-          </li>
-          <li className="sidebarListItem">
-            <WorkOutlineIcon className="sidebarIcon" />
-            <span className="sidebarListItemText">Jobs</span>
-          </li>
-          <li className="sidebarListItem">
-            <EventIcon className="sidebarIcon" />
-            <span className="sidebarListItemText">Events</span>
-          </li>
-          <li className="sidebarListItem">
-            <SchoolIcon className="sidebarIcon" />
-            <span className="sidebarListItemText">Courses</span>
-          </li>
+          
         </ul>
-        <button className="sidebarButton">Show More</button>
         <hr className="sidebarHr" />
         <ul className="sidebarFriendList">
           {Users.map((u) => (

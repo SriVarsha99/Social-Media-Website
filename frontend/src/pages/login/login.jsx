@@ -36,7 +36,7 @@ const Login = () => {
                 // Handle success, maybe redirect or clear form
                 console.log(response.data.message);
                 console.log('Login successful!');
-                navigate('/profile');
+                navigate('/Home');
             }// Navigate to profile page after successful login
         } catch (error) {
             console.error("Login error:", error);
