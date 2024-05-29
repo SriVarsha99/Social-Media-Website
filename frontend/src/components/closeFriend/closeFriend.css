@@ -11,3 +11,29 @@
     object-fit: cover;
     margin-right: 10px;
   }
+
+  .accept {
+    width: 95%;
+    padding: 2px;
+    border: none;
+    border-radius: 10px;
+    background-color: #a39ff6;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .decline {
+    width: 95%;
+    padding:2px;
+    border: 1px solid rebeccapurple;
+    border-radius: 10px;
+    background-color: white;
+    color: rebeccapurple;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .friendName {
+    width: 30%;
+  }
