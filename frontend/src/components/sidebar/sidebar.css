@@ -54,4 +54,17 @@
   list-style: none;
 }
 
+.sidebarListItemText {
+  color: rgb(99, 96, 151);
+  font-weight: bold;
+}
+
+.searchInput {
+  border: none;
+  width: 90%;
+  }
+
+  .searchbar {
+    border: 1px solid rgb(193, 190, 255);
+  }
 
