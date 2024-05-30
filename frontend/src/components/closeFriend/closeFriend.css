@@ -13,27 +13,33 @@
   }
 
   .accept {
-    width: 95%;
+    width: 75%;
     padding: 2px;
     border: none;
     border-radius: 10px;
     background-color: #a39ff6;
     color: white;
     font-weight: bold;
+    font-size: small;
     cursor: pointer;
   }
 
   .decline {
-    width: 95%;
+    width: 75%;
     padding:2px;
     border: 1px solid rebeccapurple;
     border-radius: 10px;
     background-color: white;
     color: rebeccapurple;
     font-weight: bold;
+    font-size: small;
     cursor: pointer;
   }
   
   .friendName {
-    width: 30%;
+    width: 45%;
+  }
+
+  .action {
+    width: 25%
   }

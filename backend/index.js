@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 //app.use("/api/users",userRoutes)
 
 app.use('/api/auth', authRoutes);
-app.use("/api/users",userRoutes)
+app.use("/api/users",userRoutes);
 
 
 app.get("/",(req,res) =>{
