@@ -72,3 +72,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 #SRIVARSHA
 npm install @mui/material @emotion/react @emotion/styled
+
+#backend
+sudo npm install -g --force nodemon
