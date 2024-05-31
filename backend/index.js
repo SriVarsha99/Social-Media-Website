@@ -7,6 +7,7 @@ import { db } from "./connect.js";
 import userRoutes from "./routes/users.js";
 import authRoutes from "./routes/auth.js";
 import followRoutes from "./routes/followers.js";
+import homeRoutes from "./routes/home.js";
 
 const app = express();
 app.use(express.json())
@@ -32,6 +33,7 @@ app.use((req, res, next) => {
 app.use('/api/auth', authRoutes);
 app.use("/api/users",userRoutes);
 app.use("/api/followers", followRoutes);
+app.use("/api/home", homeRoutes);
 
 
 app.get("/",(req,res) =>{
