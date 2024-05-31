@@ -2,7 +2,7 @@ import { db } from "../connect.js";
 
 export const posts =(req,res)=>{
   
-  const q = "select post_id, user_id, content, post_time, like_count, comment_count from Posts where user_id = ? order by post_time desc;";
+  const q = "select post_id, user_id, content as desc, post_time, like_count, comment_count from Posts where user_id = ? order by post_time desc;";
 
   // Get the username from request headers!
   db.query(q, [req.headers.username], (err, data) => {
