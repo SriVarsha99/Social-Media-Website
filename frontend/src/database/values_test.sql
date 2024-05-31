@@ -1,3 +1,5 @@
+use  project_social_media;
+
 INSERT INTO user(user_id, name, email, dob, username, password) 
 VALUES ('111', 'simran', 'sdhawan@scu.edu', '1996-10-21', 'simr', 'password');
 INSERT INTO user(user_id, name, email, dob, username, password) 
