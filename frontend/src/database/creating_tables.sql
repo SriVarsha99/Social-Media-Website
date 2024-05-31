@@ -1,3 +1,5 @@
+use  project_social_media;
+
 CREATE TABLE IF NOT EXISTS User (
 user_id varchar(20) NOT NULL,
 name varchar(60) NOT NULL,
