@@ -3,12 +3,15 @@ import { Users } from "../../dummyData";
 import CloseFriend from "../closeFriend/CloseFriend";
 import SearchIcon from '@mui/icons-material/Search';
 import { useState, useEffect } from "react";
-import { SearchResult } from "./SearchResult";
+import { SearchResult } from "../search/SearchResult";
+import {Follow} from "../follow/Follow";
 
 const Sidebar = () =>{
   const [input, setInput] = useState("")
   const [results, setResults] = useState([]);
   const [requests, setRequests] = useState([]);
+  const [user, setUser] = useState({});
+  const [option, setOption] = useState("");
 
   useEffect(() => {
     fetchRequests();
@@ -42,6 +45,36 @@ const Sidebar = () =>{
     setRequests(requests => requests.filter((request)=> request.user_id != u.user_id));
   }
 
+  const handleSelect = (u) => {
+    setInput("");
+    setResults([]);
+    setUser(u);
+    fetch('http://localhost:8800/api/followers/status/', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({user_id_1: 1 , user_id_2: u.user_id})
+    }).then((response) =>  response.json())
+    .then((json) =>{
+      console.log(json.length);
+      if(json.length == 0) {
+        setOption("Follow");
+      }
+      else if(json[0].status == "Request Accepted") {
+        setOption("UnFollow");
+      } else {
+        setOption("Delete");
+      }
+    });
+  }
+
+  const updateRequest = (u, opt) => {
+    setUser({});
+    setOption("");
+  }
+
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
@@ -60,10 +93,13 @@ const Sidebar = () =>{
           <li className="sidebarListItem">
             <div className="searchbarResults">
               {results.map((result, id) => {
-              return <SearchResult result={result.name} key={id} />;
+              return <SearchResult result={result} key={id} handleSelect = {handleSelect}/>;
               })}
             </div>
           </li>
+          <ul className="sidebarFriendList">
+            {user.user_id && <Follow user={user} option = {option} updateRequest={updateRequest}/> }
+          </ul>
         </ul>
         
         <span className="sidebarListItemText">Follow Requests</span>
