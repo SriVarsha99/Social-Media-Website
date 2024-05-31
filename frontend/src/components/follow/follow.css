@@ -1,0 +1,25 @@
+.sidebarFriend {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .friendName {
+    width: 45%;
+  }
+
+  .action {
+    width: 25%
+  }
+
+  .follow {
+    width: 90%;
+    padding: 2px;
+    border: none;
+    border-radius: 10px;
+    background-color: #a39ff6;
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    cursor: pointer;
+  }

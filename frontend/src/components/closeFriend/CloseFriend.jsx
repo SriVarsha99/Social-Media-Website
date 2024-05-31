@@ -12,8 +12,8 @@ const CloseFriend = ({user, deleteRequest}) => {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({user_id_1: 1 , user_id_2: user.user_id})
-    })
+      body: JSON.stringify({user_id_1: user.user_id , user_id_2: 1})
+    });
     deleteRequest(user);
   }
 
@@ -25,8 +25,8 @@ const CloseFriend = ({user, deleteRequest}) => {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({user_id_1: 1 , user_id_2: user.user_id})
-    })
+      body: JSON.stringify({user_id_1: user.user_id , user_id_2: 1})
+    });
     deleteRequest(user);
   }
 
