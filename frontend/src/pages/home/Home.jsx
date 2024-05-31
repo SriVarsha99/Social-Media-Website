@@ -1,14 +1,16 @@
-
-import Posts from "../../components/posts/Posts"
-
+import Topbar from "../../components/topbar/Topbar";
+import Sidebar from "../../components/sidebar/Sidebar";
+import Feed from "../../components/feed_home/Feed";
 import "./home.scss"
 
-const Home = () => {
+export default function Home() {
   return (
-    <div className="home">
-      <Posts/>
-    </div>
-  )
+    <>
+      <Topbar />
+      <div className="homeContainer">
+        <Sidebar />
+        <Feed/>
+      </div>
+    </>
+  );
 }
-
-export default Home
