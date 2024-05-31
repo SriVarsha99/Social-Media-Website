@@ -1,3 +1,5 @@
+use  project_social_media;
+
 delimiter $$
 
 CREATE TRIGGER update_likes_count
