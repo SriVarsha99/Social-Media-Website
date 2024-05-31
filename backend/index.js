@@ -7,7 +7,9 @@ import { db } from "./connect.js";
 import userRoutes from "./routes/users.js";
 import authRoutes from "./routes/auth.js";
 import followRoutes from "./routes/followers.js";
-import homeRoutes from "./routes/home.js";
+import homeRoutes from "./routes/post.js";
+// import commentRoutes from "./routes/comments.js";
+// import likeRoutes from "./routes/likes.js";
 
 const app = express();
 app.use(express.json())
