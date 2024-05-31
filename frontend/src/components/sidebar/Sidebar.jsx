@@ -2,12 +2,17 @@ import "./sidebar.css";
 import { Users } from "../../dummyData";
 import CloseFriend from "../closeFriend/CloseFriend";
 import SearchIcon from '@mui/icons-material/Search';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SearchResult } from "./SearchResult";
 
 const Sidebar = () =>{
   const [input, setInput] = useState("")
   const [results, setResults] = useState([]);
+  const [requests, setRequests] = useState([]);
+
+  useEffect(() => {
+    fetchRequests();
+  }, []);
 
   const fetchData = (value) => {
       fetch("http://localhost:8800/api/users/")
@@ -23,6 +28,18 @@ const Sidebar = () =>{
   const handleChange = (value) => {
     setInput(value)
     fetchData(value)
+  }
+
+  const fetchRequests = () => {
+    fetch("http://localhost:8800/api/followers/requests/")
+        .then((response) => response.json())
+        .then((json) =>{
+          setRequests(json);
+        });
+  }
+
+  const deleteRequest = (u) => {
+    setRequests(requests => requests.filter((request)=> request.user_id != u.user_id));
   }
 
   return (
@@ -52,8 +69,8 @@ const Sidebar = () =>{
         <span className="sidebarListItemText">Follow Requests</span>
         <hr className="sidebarHr" /> 
         <ul className="sidebarFriendList">
-          {Users.map((u) => (
-            <CloseFriend key={u.id} user={u} />
+          {requests.map((u) => (
+            <CloseFriend key={u.user_id} user={u} deleteRequest = {deleteRequest}/>
           ))}
         </ul>
       </div>
