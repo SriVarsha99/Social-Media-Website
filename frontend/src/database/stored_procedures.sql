@@ -1,3 +1,5 @@
+use  project_social_media;
+
 DELIMITER $$
 
 CREATE PROCEDURE update_user_age(user_id INT)
