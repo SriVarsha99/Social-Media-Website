@@ -1,6 +1,20 @@
 import "./topbar.css";
+import { useNavigate } from "react-router-dom";
+import { IoIosLogOut } from "react-icons/io";
 
 export default function Topbar() {
+  const navigate = useNavigate()
+  const logout = () =>{
+     navigate("/login");
+  }
+
+  const navigateHome = () =>{
+    navigate("/home");
+  }
+  const navigateProfile = () =>{
+    navigate("/profile");
+  }
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -11,10 +25,13 @@ export default function Topbar() {
       
       <div className="topbarRight">
         <div className="topbarLinks">
-          <span className="topbarLink">Homepage</span>
-          <span className="topbarLink">Profile</span>
+          <span className="topbarLink" onClick={navigateHome}>Homepage</span>
+          <span className="topbarLink" onClick={navigateProfile}>Profile</span>
         </div>
-        <div className="topbarImg"/>
+        <div className="topbarImg" onClick={logout}>
+          <IoIosLogOut/>
+        </div>
+        
       </div>
     </div>
   );
