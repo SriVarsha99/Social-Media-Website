@@ -1,4 +1,4 @@
-import Post from "../postt/Post";
+import Post from "../postHome/Post";
 import "./feed.css";
 import { Posts } from "../../dummyData";
 import { useEffect, useState } from "react";
