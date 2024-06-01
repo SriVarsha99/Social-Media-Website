@@ -22,7 +22,6 @@ export default function Post({ post, users }) {
         <div className="postTop">
           <div className="postTopLeft">
             <span className="postUsername">
-              {users.map((u) => console.log(typeof u.user_id))}
               {(() => {
                 const user = users.filter((u) => u.user_id == post?.user_id)[0];
                 return user ? user.name : 'User not found';
