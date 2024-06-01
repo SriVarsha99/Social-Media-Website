@@ -7,6 +7,7 @@ export default function Feed() {
 
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
+  const [user_id, setUserId] = useState(1);
 
   useEffect(() => {
     fetch("http://localhost:8800/api/home/feedPosts", {
@@ -14,7 +15,7 @@ export default function Feed() {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'user_id': 111
+        'user_id': user_id
       }
     })
         .then((response) => response.json())
