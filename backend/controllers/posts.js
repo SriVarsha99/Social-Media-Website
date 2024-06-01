@@ -1,5 +1,7 @@
 import { db } from "../connect.js";
 import moment from "moment";
+import jwt from 'jsonwebtoken';
+
 
 export const posts =(req,res)=>{
   
@@ -24,6 +26,43 @@ export const feedPosts =(req,res)=>{
     res.status(200).json(data);
   });
 }
+
+export const sharePost = (req, res) => {
+  const token = req.cookies.accessToken;
+  console.log("Request received for sharing post");
+
+  if (!token) {
+    console.log("User not logged in");
+    return res.status(401).json("Not logged in!");
+  }
+
+  console.log("Token found, verifying...");
+  jwt.verify(token, "secretkey", (err, userInfo) => {
+    if (err) {
+      console.log("Token is not valid");
+      return res.status(403).json("Token is not valid!");
+    }
+
+    console.log("User ID:", userInfo.user_id);
+    console.log("Content:", req.body.content);
+
+    const q = "INSERT INTO posts(content, user_id, post_time) VALUES (?,?,?)";
+    const values = [
+      req.body.content,
+      userInfo.user_id,
+      moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+    ];
+
+    db.query(q, values, (err, data) => { // Fix: pass values directly instead of as an array
+      if (err) {
+        console.log("Error inserting post:", err);
+        return res.status(500).json(err);
+      }
+      console.log("Post inserted successfully");
+      return res.status(200).json("Post has been created.");
+    });
+  });
+};
 
 export const comments =(req,res)=>{
     const q = "select post_id, text, datetime from comments where post_id = ? order by datetime desc;";
@@ -85,3 +124,5 @@ export const comments =(req,res)=>{
 
 
   // add routes to insert to tables later.
+
+  

@@ -3,7 +3,7 @@ import "./feed.css";
 import { Posts } from "../../dummyData";
 import { useEffect, useState } from "react";
 
-export default function Feed() {
+export default function Feed(user_id) {
 
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
