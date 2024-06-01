@@ -9,13 +9,13 @@ export default function Feed() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8800/api/home/posts", {
-      method: 'POST',
+    fetch("http://localhost:8800/api/home/feedPosts", {
+      method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({user_id: 1})
+        'user_id': 111
+      }
     })
         .then((response) => response.json())
         .then((json) =>{
