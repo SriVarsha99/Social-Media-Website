@@ -12,6 +12,7 @@ const Sidebar = () =>{
   const [requests, setRequests] = useState([]);
   const [user, setUser] = useState({});
   const [option, setOption] = useState("");
+  const [user_id, setUserId] = useState(1);
 
   useEffect(() => {
     fetchRequests();
@@ -98,7 +99,7 @@ const Sidebar = () =>{
             </div>
           </li>
           <ul className="sidebarFriendList">
-            {user.user_id && <Follow user={user} option = {option} updateRequest={updateRequest}/> }
+            {user.user_id && <Follow user_id = {user_id} user={user} option = {option} updateRequest={updateRequest}/> }
           </ul>
         </ul>
         
@@ -106,7 +107,7 @@ const Sidebar = () =>{
         <hr className="sidebarHr" /> 
         <ul className="sidebarFriendList">
           {requests.map((u) => (
-            <CloseFriend key={u.user_id} user={u} deleteRequest = {deleteRequest}/>
+            <CloseFriend user_id = {user_id} key={u.user_id} user={u} deleteRequest = {deleteRequest}/>
           ))}
         </ul>
       </div>
