@@ -6,8 +6,9 @@ export const posts =(req,res)=>{
   const q = "select post_id, user_id, content , post_time, like_count, comment_count from Posts where user_id = ? order by post_time desc;";
 
   // Get the username from request headers!
-  db.query(q, [req.headers.username], (err, data) => {
+  db.query(q, [req.body.user_id], (err, data) => {
     if (err) return res.status(500).json({ message: "Internal server error", error: err });
+    //console.log(data);
     res.status(200).json(data);
   });
 }
