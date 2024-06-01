@@ -13,6 +13,18 @@ export const posts =(req,res)=>{
   });
 }
 
+export const feedPosts =(req,res)=>{
+  
+  //const q = "select p.post_id, p.user_id, p.content , p.post_time, p.like_count, p.comment_count from friends f, posts p where f.user_id_1 = ? and f.user_id_2 = p.user_id order by p.post_time desc;";
+  const q = "select p.post_id, p.user_id, p.content , p.post_time, p.like_count, p.comment_count, (select true from likes l where l.user_id = ? and l.post_id = p.post_id ) as liked from friends f, posts p where f.user_id_1 = ? and f.user_id_2 = p.user_id order by p.post_time desc;";
+
+  db.query(q, [req.headers.user_id, req.headers.user_id], (err, data) => {
+    if (err) return res.status(500).json({ message: "Internal server error", error: err });
+    //console.log(data);
+    res.status(200).json(data);
+  });
+}
+
 export const comments =(req,res)=>{
     const q = "select post_id, text, datetime from comments where post_id = ? order by datetime desc;";
     // Get the username from request headers!
@@ -39,9 +51,10 @@ export const comments =(req,res)=>{
       req.headers.user_id,
       req.headers.post_id
     ];
+    console.log("handling addLike on post_id" + req.headers.post_id + " by user_id " + req.headers.user_id)
 
     db.query(q, [values], (err, data) => {
-      if (err) return res.status(500).json(err);
+      if (err) return res.status(500).json({"err ": err, "data": data});
         return res.status(200).json("Post has been liked.");
       });
     };
