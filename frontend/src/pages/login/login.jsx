@@ -36,6 +36,7 @@ const Login = () => {
                 // Handle success, maybe redirect or clear form
                 console.log(response.data.message);
                 console.log('Login successful!');
+                localStorage.setItem('user_id', response.data.user_id);
                 navigate(`/Home/${response.data.user_id}`);
 
             }// Navigate to profile page after successful login
