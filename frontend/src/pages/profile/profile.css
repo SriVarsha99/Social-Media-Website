@@ -21,8 +21,9 @@
 }
 
 .profileUserImg{
-    background: url("./profile.jpg") center ;
+    background: url("./user.png") center ;
     background-size: cover;
+    background-color: white;
     width: 150px;
     height: 150px;
     border-radius: 50%;
