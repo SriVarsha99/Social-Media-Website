@@ -3,7 +3,6 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Users } from "../../dummyData";
 import { useState } from "react";
 import likeImg from "./like.png";
-import heartImg from "./heart.png";
 import Comments from "../comments/Comments";
 
 export default function Post({ post }) {
@@ -36,7 +35,6 @@ export default function Post({ post }) {
         <div className="postBottom">
           <div className="postBottomLeft">
             <img className="likeIcon" src={likeImg} onClick={likeHandler} alt="" />
-            <img className="likeIcon" src={heartImg} onClick={likeHandler} alt="" />
             <span className="postLikeCounter">{like} people like it</span>
           </div>
           <div className="postBottomRight" >

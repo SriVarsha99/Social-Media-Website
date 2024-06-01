@@ -34,6 +34,10 @@ function App() {
       element: <Home />,
     },
     {
+      path: "/Home/:user_id",
+      element: <Home />,
+    },
+    {
       path: "/profile",
       element: <Profile />,
     },

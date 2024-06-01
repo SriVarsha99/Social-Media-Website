@@ -1,6 +1,8 @@
 import "./topbar.css";
+import Tooltip from '@mui/material/Tooltip';
 import { useNavigate } from "react-router-dom";
 import { IoIosLogOut } from "react-icons/io";
+import IconButton from '@mui/material/IconButton';
 
 export default function Topbar() {
   const navigate = useNavigate()
@@ -28,10 +30,17 @@ export default function Topbar() {
           <span className="topbarLink" onClick={navigateHome}>Homepage</span>
           <span className="topbarLink" onClick={navigateProfile}>Profile</span>
         </div>
-        <div className="topbarImg" onClick={logout}>
-          <IoIosLogOut/>
-        </div>
         
+        <div className="topbarImg" onClick={logout}>
+        <Tooltip title="Logout">
+          <IconButton>
+            <IoIosLogOut/>
+          </IconButton>
+        </Tooltip> 
+        </div>
+
+        
+
       </div>
     </div>
   );
