@@ -11,7 +11,7 @@ export default function Share() {
       <div className="shareWrapper">
         <div className="shareTop">
           <input
-            placeholder="What's in your mind Safak?"
+            placeholder="What's in your mind?"
             className="shareInput"
           />
         </div>
