@@ -1,8 +1,7 @@
 import "./closeFriend.css";
 import axios from "axios";
 
-const CloseFriend = ({user, deleteRequest}) => {
-
+const CloseFriend = ({user_id, user, deleteRequest}) => {
 
   const acceptRequest = (user) => {
     console.log("Accepted request from " + user.name);
@@ -12,7 +11,7 @@ const CloseFriend = ({user, deleteRequest}) => {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({user_id_1: user.user_id , user_id_2: 1})
+      body: JSON.stringify({user_id_1: user.user_id , user_id_2: user_id})
     });
     deleteRequest(user);
   }
@@ -25,7 +24,7 @@ const CloseFriend = ({user, deleteRequest}) => {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({user_id_1: user.user_id , user_id_2: 1})
+      body: JSON.stringify({user_id_1: user.user_id , user_id_2: user_id})
     });
     deleteRequest(user);
   }
