@@ -7,7 +7,7 @@ export default function Feed(user_id) {
 
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
-  const [user_id, setUserId] = useState(1);
+  
 
   useEffect(() => {
     fetch("http://localhost:8800/api/home/feedPosts", {
