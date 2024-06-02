@@ -4,6 +4,7 @@ import { Users } from "../../dummyData";
 import { useState, useEffect } from "react";
 import likeImg from "./like.png";
 import Comments from "../comments/Comments";
+import axios from "axios";
 
 export default function Post({ post, users }) {
   const [commentOpen, setCommentOpen] = useState(false);
@@ -14,6 +15,15 @@ export default function Post({ post, users }) {
   const likeHandler =()=>{
     setLike(isLiked ? like-1 : like+1)
     setIsLiked(!isLiked)
+  }
+
+  const handleDelete = async(id) =>{
+    try{
+      axios.delete("http://localhost:8800/api/posts/delete/"+id)
+      window.location.reload()
+    }catch(err){
+      console.log(err)
+    }
   }
 
   return (
@@ -30,7 +40,7 @@ export default function Post({ post, users }) {
             <span className="postDate">{post.post_time}</span>
           </div>
           <div className="postTopRight">
-            <MoreVertIcon />
+            <button onClick={()=>handleDelete(post.post_id)}>Delete</button>
           </div>
         </div>
         <div className="postCenter">

@@ -2,6 +2,17 @@ import { db } from "../connect.js";
 import moment from "moment";
 import jwt from 'jsonwebtoken';
 
+export const deletePost=(req,res)=>{
+  const post_id = req.params.id
+  //console.log("Post id:", post_id)
+  const q = "DELETE FROM posts WHERE post_id = ?"
+
+  db.query(q,[post_id], (err,data) => {
+    if(err) return res.json(err);
+    return res.json("Post deleted")
+  })
+}
+
 
 export const posts =(req,res)=>{
   
