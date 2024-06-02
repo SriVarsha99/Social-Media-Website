@@ -63,3 +63,21 @@ export const logout = (req, res) => {
     sameSite:"none"
   }).status(200).json("User has been logged out.")
 };
+
+export const getDataById = (req, res) => {
+  const user_id = req.body.user_id; // Extract user_id from the request body
+  const query = "SELECT name,dob ,gender,email FROM user WHERE user_id = ?";
+
+  db.query(query, [user_id], (err, data) => {
+    if (err) {
+      console.error("Error fetching user data:", err);
+      return res.status(500).json({ message: "Error fetching user data", error: err });
+    }
+    if (data.length === 0) {
+      return res.status(404).json({ message: "User not found for the given ID" });
+    }
+
+    const userName = data[0].name;
+    res.status(200).json(data[0]);
+  });
+};
