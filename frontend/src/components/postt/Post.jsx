@@ -45,7 +45,7 @@ export default function Post({ post, users }) {
             <span className="postCommentText" onClick={() => setCommentOpen(!commentOpen)}>{post.comment} comments</span>
           </div>
         </div>
-        {commentOpen && <Comments />}
+        {commentOpen && <Comments post_id={post.post_id}/>}
       </div>
     </div>
   );

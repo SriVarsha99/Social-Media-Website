@@ -10,6 +10,8 @@ import followRoutes from "./routes/followers.js";
 import homeRoutes from "./routes/post.js";
 import shareRoutes from "./routes/post.js";
 import postRoutes from "./routes/post.js";
+import commentRoutes from "./routes/comments.js"
+import moment from "moment";
 // import commentRoutes from "./routes/comments.js";
 // import likeRoutes from "./routes/likes.js";
 
@@ -40,7 +42,8 @@ app.use('/api/auth', authRoutes);
 app.use("/api/users",userRoutes);
 app.use("/api/followers", followRoutes);
 app.use("/api/home", homeRoutes);
-app.use("/api/posts", postRoutes)
+app.use("/api/posts", postRoutes);
+app.use("/api/comments", commentRoutes);
 //pp.use("/api/share", shareRoutes);
 
 app.get("/",(req,res) =>{
