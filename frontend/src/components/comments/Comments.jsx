@@ -14,9 +14,9 @@ const Comments = ({post_id}) => {
       try{
         const res = await axios.get("http://localhost:8800/api/comments/requests?post_id="+post_id)
         setComments(res.data);
-        console.log("...........Response", res)
+        //console.log("...........Response", res)
       }catch(err){
-        console.log(".............Response Error",err)
+        //console.log(".............Response Error",err)
       }
     }
     featchAllComments()
@@ -28,21 +28,14 @@ const Comments = ({post_id}) => {
     const text = addComment;
     const user_id = localStorage.getItem('user_id');
 
-    console.log("......Value:",text,user_id,post_id)
+    //console.log("......Value:",text,user_id,post_id)
 
     try{
       axios.post("http://localhost:8800/api/comments/add", {user_id,post_id,text})
+      window.location.reload()
     }catch(err){
       console.log(err)
     }
-
-  
-    
-   
- 
-    
-
- 
     
   };
  
