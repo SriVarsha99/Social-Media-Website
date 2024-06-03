@@ -50,7 +50,7 @@ const Comments = ({post_id}) => {
         <div className="comment">
           <div className="info">
             <span>{comment.name}</span>
-            <p id="text">{comment.text}</p>
+            <p id="text">{comment.comment_text}</p>
           </div>
           <span className="date">1 hour ago</span>
         </div>

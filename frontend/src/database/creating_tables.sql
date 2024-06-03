@@ -71,17 +71,23 @@ CREATE TABLE IF NOT EXISTS likes (
 	ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS comments (
-	user_id VARCHAR(20),
-    post_id INT,
-    text VARCHAR(300) NOT NULL,
-    datetime timestamp DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (post_id, user_id),
-    CONSTRAINT comments_ibfk_1 FOREIGN KEY (user_id) REFERENCES User (user_id)
+CREATE TABLE `project_social_media`.`comments` (
+  `comment_id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` VARCHAR(20) NULL,
+  `post_id` INT NULL,
+  `comment_text` VARCHAR(200) NOT NULL,
+`datetime` timestamp DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`comment_id`),
+  INDEX `post_id_idx` (`post_id` ASC) VISIBLE,
+  INDEX `user_id_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `post_id`
+    FOREIGN KEY (`post_id`)
+    REFERENCES `project_social_media`.`posts` (`post_id`)
     ON DELETE CASCADE
-	ON UPDATE CASCADE,
-    CONSTRAINT commments_ibfk_2 FOREIGN KEY (post_id) REFERENCES Posts (post_id)
+    ON UPDATE CASCADE,
+  CONSTRAINT `user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `project_social_media`.`user` (`user_id`)
     ON DELETE CASCADE
-	ON UPDATE CASCADE
-);
+    ON UPDATE CASCADE);
 
