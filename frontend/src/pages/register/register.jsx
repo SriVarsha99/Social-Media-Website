@@ -13,6 +13,7 @@ const Register = () => {
         password:"",
         dob: "",
         address:"",
+        phone:"",
         gender:"",
     });
     
@@ -61,7 +62,10 @@ const Register = () => {
                         <input type="email" placeholder="Email" name="email" onChange={handleChange} />
                         <input type="text" placeholder="Username" name="username" onChange={handleChange} />
                         <input type="password" placeholder="Password" name="password" onChange={handleChange} />
-                        <input type="date" placeholder="Date of Birth" name="dob" onChange={handleChange} />
+                        <label htmlFor="dob" className="dob">DOB:</label>
+                        <input type="date" className="dob-input" placeholder="Date of Birth" name="dob" onChange={handleChange}/>
+                        <input type="text" placeholder="Address" name="address" onChange={handleChange} />
+                        <input type="tel" placeholder="Phone number" name="phone" onChange={handleChange} />
                         <label htmlFor="gender" className="gender">Select Gender:</label>
                         <select className="gender-select" name="gender" onChange={handleChange}>
                             <option value="male">Male</option>

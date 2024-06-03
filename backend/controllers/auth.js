@@ -15,7 +15,7 @@ export const register = (req, res) => {
     }
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(req.body.password, salt);
-    const insertQuery = "INSERT INTO user (name, email, dob, username, password,gender) VALUES (?, ?, ?, ?, ?,?)";
+    const insertQuery = "INSERT INTO user (name, email, dob, username, password,gender,address,phone_num) VALUES (?, ?, ?, ?, ?,?,?,?)";
     const values = [
       req.body.name,
       req.body.email,
@@ -23,12 +23,15 @@ export const register = (req, res) => {
       req.body.username,
       req.body.password,
       req.body.gender,
+      req.body.address,
+      req.body.phone,
     ];
     db.query(insertQuery, values, (err, data) => {
       if(err){
         if (err.code === 'ER_DUP_ENTRY') {
           return res.status(409).json({ message: "User already exists!" });
       }
+      console.error("Error inserting new user:", err); 
       return res.status(500).json({ message: "Failed to create user", error: err });
     }
     return res.status(200).json({ message: "User has been created." });
@@ -66,7 +69,7 @@ export const logout = (req, res) => {
 
 export const getDataById = (req, res) => {
   const user_id = req.body.user_id; // Extract user_id from the request body
-  const query = "SELECT name,dob ,gender,email FROM user WHERE user_id = ?";
+  const query = "SELECT name,dob ,gender,email,age,address FROM user WHERE user_id = ?";
 
   db.query(query, [user_id], (err, data) => {
     if (err) {
