@@ -31,9 +31,22 @@ CONSTRAINT post_ibfk_1 FOREIGN KEY (user_id) REFERENCES User (user_id)
 ON DELETE CASCADE
 ON UPDATE CASCADE);
 
-
-
 CREATE TABLE IF NOT EXISTS friends (
+    user_id_1 INT ,
+    user_id_2 INT ,
+    status VARCHAR(20) DEFAULT 'Request Sent',
+    PRIMARY KEY (user_id_1, user_id_2),
+    CONSTRAINT friends_ibfk_1  FOREIGN KEY (user_id_1) REFERENCES User (user_id) 
+    ON DELETE CASCADE
+	ON UPDATE CASCADE ,
+    CONSTRAINT friends_ibfk_2  FOREIGN KEY (user_id_2) REFERENCES User (user_id)
+    ON DELETE CASCADE
+	ON UPDATE CASCADE,
+    CONSTRAINT friends_ibfk_3 CHECK(status = 'Request Accepted' or status ='Request Sent' or status = 'Request Declined' )
+);
+
+
+/*CREATE TABLE IF NOT EXISTS friends (
     user_id_1 VARCHAR(20) ,
     user_id_2 VARCHAR(20) ,
     status VARCHAR(20) DEFAULT 'Request Sent',
@@ -45,7 +58,7 @@ CREATE TABLE IF NOT EXISTS friends (
     ON DELETE CASCADE
 	ON UPDATE CASCADE,
     CONSTRAINT friends_ibfk_3 CHECK(status = 'Request Accepted' or status ='Request Sent' or status = 'Request Declined' )
-);
+);*/
 
 CREATE TABLE IF NOT EXISTS publishes (
 	user_id VARCHAR (20) ,
