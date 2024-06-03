@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Comments from "../comments/Comments";
 import axios from "axios";
 import { FaHeart } from "react-icons/fa6";
+import { AiOutlineDelete } from "react-icons/ai";
 
 export default function Post({ post, users }) {
   const [commentOpen, setCommentOpen] = useState(false);
@@ -49,7 +50,8 @@ export default function Post({ post, users }) {
             <span className="postDate">{post.post_time}</span>
           </div>
           <div className="postTopRight">
-            <button onClick={()=>handleDelete(post.post_id)}>Delete</button>
+            {/* <button onClick={()=>handleDelete(post.post_id)}>Delete</button> */}
+            <AiOutlineDelete size="20px" strokeWidth = "2em"  stroke="black" onClick={()=>handleDelete(post.post_id)}/>
           </div>
         </div>
         <div className="postCenter">

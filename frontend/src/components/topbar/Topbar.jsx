@@ -34,13 +34,10 @@ export default function Topbar() {
         <div className="topbarImg" onClick={logout}>
         <Tooltip title="Logout">
           <IconButton>
-            <IoIosLogOut/>
+            <IoIosLogOut fill="white" />
           </IconButton>
         </Tooltip> 
         </div>
-
-        
-
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ import axios from "axios";
 export default function Home() {
   const [userData, setUserData] = useState({ name: ""});
   const user_id = localStorage.getItem('user_id');
-  console.log(user_id)
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -30,7 +30,7 @@ export default function Home() {
     <>
       <Topbar />
       <div className="homeContainer">
-        <Sidebar />
+        <Sidebar user_id={user_id}/>
         <div className="homeRight">
           <div className="homeRightTop">
             <div className="homeCover">
@@ -47,10 +47,9 @@ export default function Home() {
             </div>
           </div>
           <div className="homeRightBottom">
-        <Feed/>
+          <Feed user_id={user_id} />
         </div>
         </div>
-        <Feed user_id={user_id}/>
       </div>
     </>
   );

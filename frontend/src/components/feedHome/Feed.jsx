@@ -1,14 +1,12 @@
 import Post from "../postHome/Post";
 import "./feed.css";
-import { Posts } from "../../dummyData";
 import { useEffect, useState } from "react";
 
-export default function Feed(user_id) {
+export default function Feed({user_id}) {
 
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
   
-
   useEffect(() => {
     fetch("http://localhost:8800/api/home/feedPosts", {
       method: 'GET',
