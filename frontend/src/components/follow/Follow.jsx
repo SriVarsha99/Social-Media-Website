@@ -4,6 +4,7 @@ import "./follow.css";
 export const Follow = ({user_id, user, option, updateRequest}) => {
 
     const followRequest = (u, option) => {
+      console.log("Sending follow request...");
       if(option == "Follow") {
             fetch('http://localhost:8800/api/followers/follow/', {
             method: 'POST',
@@ -14,6 +15,7 @@ export const Follow = ({user_id, user, option, updateRequest}) => {
             body: JSON.stringify({user_id_1: user_id , user_id_2: u.user_id})
           });
       } else {
+        console.log("Deleting follow request...");
         fetch('http://localhost:8800/api/followers/unfollow/', {
           method: 'POST',
           headers: {

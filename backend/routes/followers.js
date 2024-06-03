@@ -1,7 +1,7 @@
 import express from 'express';
 import {requests, accept, decline, follow, status} from "../controllers/followers.js"
 const router = express.Router()
-router.get("/requests", requests)
+router.post("/requests", requests)
 router.post("/accept", accept)
 router.post("/decline", decline)
 router.post("/status", status)
