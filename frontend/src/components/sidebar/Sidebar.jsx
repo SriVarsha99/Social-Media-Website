@@ -34,11 +34,17 @@ const Sidebar = ({user_id}) =>{
   }
 
   const fetchRequests = () => {
-    fetch("http://localhost:8800/api/followers/requests/")
-        .then((response) => response.json())
-        .then((json) =>{
-          setRequests(json);
-        });
+    fetch('http://localhost:8800/api/followers/requests/', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({user_id: user_id})
+    }).then((response) => response.json())
+      .then((json) =>{
+        setRequests(json);
+    });
   }
 
   const deleteRequest = (u) => {
@@ -55,7 +61,7 @@ const Sidebar = ({user_id}) =>{
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({user_id_1: 1 , user_id_2: u.user_id})
+      body: JSON.stringify({user_id_1: user_id , user_id_2: u.user_id})
     }).then((response) =>  response.json())
     .then((json) =>{
       console.log(json.length);
