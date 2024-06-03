@@ -2,20 +2,29 @@ import "./post.css";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Users } from "../../dummyData";
 import { useState, useEffect } from "react";
-import likeImg from "./like.png";
 import Comments from "../comments/Comments";
 import axios from "axios";
+import { FaHeart } from "react-icons/fa6";
 
 export default function Post({ post, users }) {
   const [commentOpen, setCommentOpen] = useState(false);
   const [like,setLike] = useState(post.like);
   const [isLiked,setIsLiked] = useState(false);
 
+  useEffect(()=>{
+    const featchLikeCount = async ()=>{
+      try{
+        const res = await axios.get("http://localhost:8800/api/comments/likes?post_id="+post.post_id)
+        setLike(res.data);
+        //console.log("...........Response", res)
+      }catch(err){
+        //console.log(".............Response Error",err)
+      }
+    }
+    featchLikeCount()
 
-  const likeHandler =()=>{
-    setLike(isLiked ? like-1 : like+1)
-    setIsLiked(!isLiked)
-  }
+  },[])
+
 
   const handleDelete = async(id) =>{
     try{
@@ -48,7 +57,7 @@ export default function Post({ post, users }) {
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
-            <img className="likeIcon" src={likeImg} onClick={likeHandler} alt="" />
+          <FaHeart style={{ width: '20', height: '15' }} fill="red" strokeWidth = "5em"  stroke="red" />
             <span className="postLikeCounter">{like} {post.like_count}</span>
           </div>
           <div className="postBottomRight" >
