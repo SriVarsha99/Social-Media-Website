@@ -102,23 +102,15 @@ CREATE TABLE IF NOT EXISTS likes (
 );
 
 CREATE TABLE comments (
-  `comment_id` INT NOT NULL AUTO_INCREMENT,
-  `user_id` VARCHAR(20) NULL,
-  `post_id` INT NULL,
-  `comment_text` VARCHAR(200) NOT NULL,
-`datetime` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `comment_id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `post_id` int NOT NULL,
+  `comment_text` varchar(200) NOT NULL,
+  `datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`comment_id`),
-  INDEX `post_id_idx` (`post_id` ASC) VISIBLE,
-  INDEX `user_id_idx` (`user_id` ASC) VISIBLE,
-  CONSTRAINT `post_id`
-    FOREIGN KEY (`post_id`)
-    REFERENCES `project_social_media`.`posts` (`post_id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `user_id`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `project_social_media`.`user` (`user_id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
+  KEY `comment_post_id_idx` (`post_id`),
+  KEY `comment_user_id_idx` (`user_id`),
+  CONSTRAINT `comment_post_id` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `comment_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
     );
 
