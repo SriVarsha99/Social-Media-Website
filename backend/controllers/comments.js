@@ -13,7 +13,7 @@ export const requests =(req,res)=>{
 export const add =(req,res)=>{
     console.log("Yessss")
 
-    const q = "INSERT INTO comments (user_id,post_id,text,datetime) VALUES (?,?,?,?)"
+    const q = "INSERT INTO comments (user_id,post_id,comment_text,datetime) VALUES (?,?,?,?)"
     const timen = moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
     //console.log("Working:",values)
   
