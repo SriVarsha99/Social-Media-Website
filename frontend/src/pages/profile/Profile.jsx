@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 export default function Profile() {
   const [userData, setUserData] = useState({ name: "", dob:"",gender:"",email:""});
   const user_id = localStorage.getItem('user_id');
-  console.log(user_id)
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,7 +45,7 @@ export default function Profile() {
             </div>
           </div>
           <div className="profileRightBottom">
-            <Feed />
+            <Feed user_id={user_id}/>
             <Rightbar profile/>
           </div>
         </div>

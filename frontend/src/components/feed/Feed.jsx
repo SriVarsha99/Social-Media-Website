@@ -4,7 +4,7 @@ import "./feed.css";
 import { Posts } from "../../dummyData";
 import { useEffect, useState } from "react";
 
-export default function Feed() {
+export default function Feed({user_id}) {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
 
@@ -15,7 +15,7 @@ export default function Feed() {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({user_id: 1})
+      body: JSON.stringify({user_id: user_id})
     })
         .then((response) => response.json())
         .then((json) =>{

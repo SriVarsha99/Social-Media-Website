@@ -6,13 +6,12 @@ import { useState, useEffect } from "react";
 import { SearchResult } from "../search/SearchResult";
 import {Follow} from "../follow/Follow";
 
-const Sidebar = () =>{
+const Sidebar = ({user_id}) =>{
   const [input, setInput] = useState("")
   const [results, setResults] = useState([]);
   const [requests, setRequests] = useState([]);
   const [user, setUser] = useState({});
   const [option, setOption] = useState("");
-  const [user_id, setUserId] = useState(1);
 
   useEffect(() => {
     fetchRequests();
