@@ -14,6 +14,7 @@ export default function Share() {
     axios.post("http://localhost:8800/api/posts/share", { content, user_id }, { withCredentials: true })
       .then(response => {
         console.log("Post shared successfully");
+        window.location.reload();
         // Add any additional logic here if needed
       })
       .catch(error => {
