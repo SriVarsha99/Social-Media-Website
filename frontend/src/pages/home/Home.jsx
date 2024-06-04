@@ -43,7 +43,7 @@ export default function Home() {
             </div>
             <div className="homeInfo">
                 <h4 className="homeInfoName">{userData.name}</h4>
-                <span className="homeInfoDesc">Hello my friends!</span>
+                <span className="homeInfoDesc">Hello friends!</span>
             </div>
           </div>
           <div className="homeRightBottom">

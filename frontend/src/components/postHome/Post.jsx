@@ -3,6 +3,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useState, useEffect } from "react";
 import Comments from "../comments/Comments";
 import { FaHeart } from "react-icons/fa6";
+import moment from "moment"
 
 export default function Post({ post, users }) {
   const [commentOpen, setCommentOpen] = useState(false);
@@ -65,7 +66,7 @@ export default function Post({ post, users }) {
                 return user ? user.name : 'User not found';
               })()}
             </span>
-            <span className="postDate">{post.post_time}</span>
+            <span className="postDate">{moment(post.post_time).fromNow()}</span>
           </div>
           <div className="postTopRight">
             <MoreVertIcon />
