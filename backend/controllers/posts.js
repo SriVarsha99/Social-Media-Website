@@ -30,7 +30,7 @@ export const feedPosts =(req,res)=>{
   
   //const q = "select p.post_id, p.user_id, p.content , p.post_time, p.like_count, p.comment_count from friends f, posts p where f.user_id_1 = ? and f.user_id_2 = p.user_id order by p.post_time desc;";
   const q = "select p.post_id, p.user_id, p.content , p.post_time, p.like_count, p.comment_count, (select true from likes l where l.user_id = ? and l.post_id = p.post_id ) as liked from friends f, posts p where f.user_id_1 = ? and f.user_id_2 = p.user_id and f.status = 'Request Accepted' order by p.post_time desc;";
-
+  console.log("received feedPosts for user id: " + req.headers.user_id);
   db.query(q, [req.headers.user_id, req.headers.user_id], (err, data) => {
     if (err) return res.status(500).json({ message: "Internal server error", error: err });
     //console.log(data);
