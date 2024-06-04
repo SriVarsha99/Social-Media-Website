@@ -106,3 +106,20 @@ export const getDataById = (req, res) => {
     res.status(200).json(data[0]);
   });
 };
+
+
+export const getFriendsById = (req, res) => {
+  const user_id = req.body.user_id; // Extract user_id from the request body
+  const query = "SELECT u.name FROM user u where u.user_id in (select user_id_2 from friends where status= 'Request Accepted' and user_id_1 = ?)";
+
+  db.query(query, [user_id], (err, data) => {
+    if (err) {
+      console.error("Error fetching user data:", err);
+      return res.status(500).json({ message: "Error fetching user data", error: err });
+    }
+    if (data.length === 0) {
+      return res.status(200).json([]); 
+    }
+    res.status(200).json(data); 
+  });
+};

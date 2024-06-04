@@ -81,3 +81,23 @@
   object-fit: cover;
   border-radius: 5px;
 }
+.newSectionContainer {
+  max-height: 200px; /* Adjust height as needed */
+  overflow-y: auto;
+}
+
+.friendList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.friendItem {
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.newSectionContainer {
+  max-height: 200px; /* Adjust as needed */
+  overflow-y: auto;
+}

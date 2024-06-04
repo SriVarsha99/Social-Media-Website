@@ -28,6 +28,7 @@ export default function Rightbar({ profile }) {
   const ProfileRightbar = () => {
     const [userData, setUserData] = useState({ name: "", dob:"",gender:"",email:""});
     const user_id = localStorage.getItem('user_id');
+    const [friends, setFriends] = useState([]); 
     console.log(user_id)
     useEffect(() => {
       const fetchData = async () => {
@@ -42,7 +43,23 @@ export default function Rightbar({ profile }) {
         }
       };
     fetchData();
+    },[user_id]);
+
+  useEffect(() => {
+    const fetchFriends = async () => {
+      try {
+        if (user_id) {
+          const response = await axios.post('http://localhost:8800/api/auth/getFriendsById', { user_id });
+          setFriends(Array.isArray(response.data) ? response.data : []); // Ensure response data is an array
+        }
+      } catch (error) {
+        console.error('Error fetching friends data:', error);
+        setFriends([]); // Set to empty array in case of error
+      }
+    };
+    fetchFriends();
   }, [user_id]);
+
     return (
       <>
         <h4 className="rightbarTitle">About</h4>
@@ -68,7 +85,18 @@ export default function Rightbar({ profile }) {
             <span className="rightbarInfoValue">{userData.dob}</span>
           </div>
         </div>
-        
+        <hr className="sectionDivider" />
+        <h4 className="rightbarTitle">Friends</h4>
+        <div className="newSectionContainer"> {/* New section container */}
+          {/* Content for the new section */}
+          <ul className="friendList">
+            {friends.map((friend, index) => (
+              <li key={index} className="friendItem">
+                {friend.name}
+              </li>
+            ))}
+          </ul>
+        </div>
       </>
     );
   };
