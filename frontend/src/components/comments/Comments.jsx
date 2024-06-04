@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from 'axios';
 import "./comments.scss";
 import {isMutation, useQueryClient} from "@tanstack/react-query";
+import moment from "moment";
 
 
 const Comments = ({post_id}) => {
@@ -52,7 +53,7 @@ const Comments = ({post_id}) => {
             <span>{comment.name}</span>
             <p id="text">{comment.comment_text}</p>
           </div>
-          <span className="date">1 hour ago</span>
+          <span className="date">{moment(comment.datetime).fromNow()}</span>
         </div>
       ))}
     </div>
