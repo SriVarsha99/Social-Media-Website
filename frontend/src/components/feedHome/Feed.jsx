@@ -35,7 +35,7 @@ export default function Feed({user_id}) {
     <div className="feed">
       <div className="feedWrapper">
         {posts.map((p) => (
-          <Post key={p.post_id} post={p} users = {users}/>
+          <Post key={p.post_id} post={p} users = {users} user_id={user_id}/>
         ))}
       </div>
     </div> 

@@ -96,12 +96,12 @@ export const comments =(req,res)=>{
   }
 
   export const addLike = (req,res)=>{
-    const q = "INSERT INTO likes (`user_id`,`post_id`) VALUES (?);";
+    const q = "INSERT INTO likes (user_id, post_id) VALUES (?);";
     const values = [
       req.headers.user_id,
       req.headers.post_id
     ];
-    console.log("handling addLike on post_id" + req.headers.post_id + " by user_id " + req.headers.user_id)
+    console.log("Handling addLike on post_id" + req.headers.post_id + " by user_id " + req.headers.user_id)
 
     db.query(q, [values], (err, data) => {
       if (err) return res.status(500).json({"err ": err, "data": data});

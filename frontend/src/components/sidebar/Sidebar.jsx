@@ -13,6 +13,7 @@ const Sidebar = ({user_id}) =>{
   const [user, setUser] = useState({});
   const [option, setOption] = useState("");
 
+  console.log(user_id);
   useEffect(() => {
     fetchRequests();
   }, []);
