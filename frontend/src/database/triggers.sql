@@ -15,6 +15,21 @@ set posts.like_count= l_count
 where new.post_id= posts.post_id;
 END; $$
 
+delimiter $$
+
+CREATE TRIGGER update_likes_count2
+AFTER INSERT ON likes
+FOR EACH ROW
+BEGIN
+declare l_count INT;
+Select count(*) into l_count
+from likes
+where likes.post_id = old.post_id;
+Update posts
+set posts.like_count= l_count
+where old.post_id= posts.post_id;
+END; $$
+
 
 CREATE TRIGGER update_comments_count
 AFTER INSERT ON comments
