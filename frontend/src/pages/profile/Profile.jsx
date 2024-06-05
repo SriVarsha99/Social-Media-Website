@@ -28,7 +28,7 @@ export default function Profile() {
     <>
       <Topbar />
       <div className="profile">
-        <Sidebar />
+        <Sidebar user_id={user_id}/>
         <div className="profileRight">
           <div className="profileRightTop">
             <div className="profileCover">
@@ -41,7 +41,6 @@ export default function Profile() {
             </div>
             <div className="profileInfo">
                 <h4 className="profileInfoName">{userData.name}</h4>
-                <span className="profileInfoDesc">Hello friends!</span>
             </div>
           </div>
           <div className="profileRightBottom">

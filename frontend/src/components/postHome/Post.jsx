@@ -5,12 +5,11 @@ import Comments from "../comments/Comments";
 import { FaHeart } from "react-icons/fa6";
 import moment from "moment"
 
-export default function Post({ post, users }) {
+export default function Post({ post, users, user_id }) {
   const [commentOpen, setCommentOpen] = useState(false);
   const [isLiked,setIsLiked] = useState(post.liked === 1 ? true : false);
   const [likeCount,setlikeCount] = useState(post.like_count);
   const [fill, setFill] = useState(post.liked === 1? "red": "white");
-  const [user_id, setUserId] = useState(1);
 
 
   const likeHandler =(user_id, post_id)=>{
