@@ -18,7 +18,7 @@ END; $$
 delimiter $$
 
 CREATE TRIGGER update_likes_count2
-AFTER INSERT ON likes
+AFTER DELETE ON likes
 FOR EACH ROW
 BEGIN
 declare l_count INT;
