@@ -15,15 +15,16 @@ export const deletePost=(req,res)=>{
 
 
 export const posts =(req,res)=>{
-  
+  let start = Date.now();
   const q = "select post_id, user_id, content , post_time, like_count, comment_count from Posts where user_id = ? order by post_time desc;";
-
   // Get the username from request headers!
   db.query(q, [req.body.user_id], (err, data) => {
     if (err) return res.status(500).json({ message: "Internal server error", error: err });
     //console.log(data);
     res.status(200).json(data);
   });
+  let timetaken = Date.now() - start;
+  console.log(timetaken);
 }
 
 export const feedPosts =(req,res)=>{
@@ -96,20 +97,24 @@ export const comments =(req,res)=>{
   }
 
   export const addLike = (req,res)=>{
+    let start = Date.now();
     const q = "INSERT INTO likes (user_id, post_id) VALUES (?);";
     const values = [
       req.headers.user_id,
       req.headers.post_id
     ];
-    console.log("Handling addLike on post_id" + req.headers.post_id + " by user_id " + req.headers.user_id)
+    console.log("Handling addLike on post_id " + req.headers.post_id + " by user_id " + req.headers.user_id)
 
     db.query(q, [values], (err, data) => {
       if (err) return res.status(500).json({"err ": err, "data": data});
         return res.status(200).json("Post has been liked.");
       });
+      let timetaken = Date.now() - start;
+      console.log("Time taken: "+ timetaken);
     };
 
     export const removeLike = (req,res)=>{
+      let start = Date.now();
       const q = "DELETE FROM likes WHERE user_id =? AND post_id=?";
       console.log("handling removeLike on post_id" + req.headers.post_id + " by user_id " + req.headers.user_id)
   
@@ -117,6 +122,8 @@ export const comments =(req,res)=>{
         if (err) return res.status(500).json({"err ": err, "data": data});
           return res.status(200).json("Post has been unliked.");
         });
+        let timetaken = Date.now() - start;
+        console.log("Time taken: "+ timetaken);
       };
 
     export const addComment = (req, res) => {
